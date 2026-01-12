@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0D0D12" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+
+    <title>Daily Wisdom ✨</title>
+
+    <link rel="manifest" href="/manifest.json" />
+
+    <style>
+      /* ==================== IMPORTS & RESET ==================== */
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* ==================== BODY & BASE ==================== */
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont,
+          'SF Pro Display', system-ui, sans-serif;
+        background: #0d0d12;
+        color: #ffffff;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        position: relative;
+        min-height: 100vh;
+      }
+
+      /* Background avec mesh gradient animé */
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(
+            at 0% 0%,
+            rgba(255, 107, 157, 0.2) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 100% 0%,
+            rgba(167, 139, 250, 0.2) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 100% 100%,
+            rgba(34, 211, 238, 0.2) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 0% 100%,
+            rgba(250, 204, 21, 0.1) 0%,
+            transparent 50%
+          );
+        z-index: 0;
+        animation: meshMove 20s ease infinite;
+      }
+
+      @keyframes meshMove {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.8;
+          transform: scale(1.1);
+        }
+      }
+
+      /* Grain texture overlay */
+      body::after {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0.4;
+      }
+
+      #app {
+        position: relative;
+        z-index: 2;
+        min-height: 100vh;
+      }
+
+      /* ==================== LAYOUT ==================== */
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* ==================== HOME VIEW ==================== */
+      #homeView {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 40px 0;
+        gap: 32px;
+      }
+
+      /* ==================== LIQUID GLASS CARD ==================== */
+      .glass-card {
+        position: relative;
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(60px) saturate(200%);
+        -webkit-backdrop-filter: blur(60px) saturate(200%);
+        border: 1.5px solid rgba(255, 255, 255, 0.08);
+        border-radius: 40px;
+        padding: 48px 40px;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5),
+          0 10px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1),
+          inset 0 -1px 0 rgba(255, 255, 255, 0.02);
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        overflow: hidden;
+        width: 100%;
+        max-width: 800px;
+      }
+
+      /* Reflet arc-en-ciel animé */
+      .glass-card::before {
+        content: '';
+        position: absolute;
+        inset: -3px;
+        border-radius: 40px;
+        padding: 2px;
+        background: linear-gradient(
+          135deg,
+          transparent 0%,
+          rgba(255, 107, 157, 0.6) 20%,
+          rgba(167, 139, 250, 0.6) 40%,
+          rgba(34, 211, 238, 0.6) 60%,
+          rgba(250, 204, 21, 0.6) 80%,
+          transparent 100%
+        );
+        background-size: 200% 200%;
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        animation: borderRotate 8s linear infinite;
+        transition: opacity 0.5s ease;
+      }
+
+      @keyframes borderRotate {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .glass-card:hover::before {
+        opacity: 1;
+      }
+
+      /* Glow intérieur qui suit la souris */
+      .glass-card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 40px;
+        background: radial-gradient(
+          600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+          rgba(255, 255, 255, 0.08),
+          transparent 40%
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .glass-card:hover::after {
+        opacity: 1;
+      }
+
+      .glass-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6),
+          0 15px 50px rgba(255, 107, 157, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      }
+
+      .glass-card > * {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* ==================== GRADIENT BADGE ==================== */
+      .glass-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 32px;
+        background: linear-gradient(
+          135deg,
+          rgba(167, 139, 250, 0.15) 0%,
+          rgba(167, 139, 250, 0.05) 100%
+        );
+        backdrop-filter: blur(40px);
+        -webkit-backdrop-filter: blur(40px);
+        border: 1.5px solid rgba(167, 139, 250, 0.3);
+        border-radius: 100px;
+        box-shadow: 0 10px 30px rgba(167, 139, 250, 0.25),
+          0 0 40px rgba(167, 139, 250, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        position: relative;
+        overflow: hidden;
+        animation: fadeInDown 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Shimmer effect */
+      .glass-badge::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -100%;
+        width: 50%;
+        height: 200%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.25),
+          transparent
+        );
+        transform: skewX(-20deg);
+        animation: shimmer 4s infinite;
+      }
+
+      @keyframes shimmer {
+        0%,
+        100% {
+          left: -100%;
+        }
+        50% {
+          left: 150%;
+        }
+      }
+
+      #categoryEmoji {
+        font-size: 26px;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+      }
+
+      #categoryName {
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        background: linear-gradient(135deg, #e9d5ff, #c4b5fd);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* ==================== WISDOM TEXT ==================== */
+      #wisdomText {
+        font-size: 20px;
+        line-height: 1.8;
+        font-weight: 400;
+        letter-spacing: -0.3px;
+        color: #ffffff;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+        animation: fadeIn 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+        text-align: left;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ==================== PREMIUM BUTTON ==================== */
+      .glass-button-primary {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        padding: 20px 44px;
+        background: linear-gradient(135deg, #ff6b9d 0%, #c44d8e 100%);
+        color: white;
+        border: 1.5px solid rgba(255, 255, 255, 0.3);
+        border-radius: 100px;
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: 0.4px;
+        cursor: pointer;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        box-shadow: 0 15px 50px rgba(255, 107, 157, 0.45),
+          0 5px 20px rgba(255, 107, 157, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3),
+          inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+        animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1) 0.3s backwards;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Reflet animé sur le bouton */
+      .glass-button-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        transition: left 0.6s ease;
+      }
+
+      .glass-button-primary:hover::before {
+        left: 100%;
+      }
+
+      /* Glow extérieur */
+      .glass-button-primary::after {
+        content: '';
+        position: absolute;
+        inset: -5px;
+        border-radius: 100px;
+        background: linear-gradient(135deg, #ff6b9d 0%, #c44d8e 100%);
+        z-index: -1;
+        opacity: 0;
+        filter: blur(20px);
+        transition: opacity 0.4s ease;
+      }
+
+      .glass-button-primary:hover::after {
+        opacity: 0.6;
+      }
+
+      .glass-button-primary:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 25px 70px rgba(255, 107, 157, 0.55),
+          0 10px 30px rgba(255, 107, 157, 0.4),
+          inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+
+      .glass-button-primary:active {
+        transform: translateY(-2px) scale(0.98);
+      }
+
+      .glass-button-primary svg {
+        filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+      }
+
+      /* ==================== SETTINGS VIEW ==================== */
+      #settingsView {
+        min-height: 100vh;
+        padding: 40px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .settings-container {
+        width: 100%;
+        max-width: 800px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .settings-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      }
+
+      #settingsView h1 {
+        font-size: 36px;
+        font-weight: 700;
+        letter-spacing: -1px;
+        background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .settings-info {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 14px;
+        text-align: center;
+        margin-top: auto;
+        padding-top: 40px;
+      }
+
+      /* ==================== CLOSE BUTTON ==================== */
+      .close-button {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(30px);
+        border: 1.5px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      }
+
+      .close-button:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+        color: white;
+        transform: scale(1.08) rotate(90deg);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4),
+          0 0 30px rgba(255, 107, 157, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      }
+
+      /* ==================== TOGGLE SWITCH ==================== */
+      .toggle {
+        position: relative;
+        display: inline-block;
+        width: 64px;
+        height: 36px;
+        flex-shrink: 0;
+      }
+
+      .toggle input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(20px);
+        border: 1.5px solid rgba(255, 255, 255, 0.15);
+        border-radius: 100px;
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3),
+          0 0 0 1px rgba(255, 255, 255, 0.05);
+      }
+
+      .slider:before {
+        position: absolute;
+        content: '';
+        height: 28px;
+        width: 28px;
+        left: 3px;
+        bottom: 2.5px;
+        background: linear-gradient(135deg, #ffffff, #f0f0f0);
+        border-radius: 50%;
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4),
+          inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      }
+
+      input:checked + .slider {
+        background: linear-gradient(135deg, #ff6b9d 0%, #c44d8e 100%);
+        border-color: rgba(255, 107, 157, 0.5);
+        box-shadow: 0 0 30px rgba(255, 107, 157, 0.4),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(28px);
+        box-shadow: 0 6px 20px rgba(255, 107, 157, 0.5),
+          inset 0 1px 0 rgba(255, 255, 255, 0.7);
+      }
+
+      /* ==================== SETTINGS CARD CONTENT ==================== */
+      .settings-card-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .settings-card-left {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex: 1;
+      }
+
+      .settings-emoji {
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+
+      .settings-label {
+        font-size: 16px;
+        font-weight: 500;
+        color: #ffffff;
+      }
+
+      /* ==================== TIME BADGE ==================== */
+      .time-badge {
+        padding: 12px 28px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 107, 157, 0.15) 0%,
+          rgba(255, 107, 157, 0.08) 100%
+        );
+        backdrop-filter: blur(30px);
+        border: 1.5px solid rgba(255, 107, 157, 0.3);
+        color: #ff8ab5;
+        border-radius: 100px;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        box-shadow: 0 8px 20px rgba(255, 107, 157, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        flex-shrink: 0;
+      }
+
+      .time-badge:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 107, 157, 0.25) 0%,
+          rgba(255, 107, 157, 0.15) 100%
+        );
+        transform: scale(1.05);
+        border-color: rgba(255, 107, 157, 0.5);
+        box-shadow: 0 12px 30px rgba(255, 107, 157, 0.3),
+          0 0 40px rgba(255, 107, 157, 0.2),
+          inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      }
+
+      /* ==================== TIME INPUT ==================== */
+      #timeInput {
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(30px);
+        border: 1.5px solid rgba(255, 255, 255, 0.12);
+        border-radius: 24px;
+        padding: 18px 24px;
+        color: white;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+        transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.3),
+          0 0 0 1px rgba(255, 255, 255, 0.05);
+        width: 100%;
+      }
+
+      #timeInput:focus {
+        outline: none;
+        border-color: rgba(255, 107, 157, 0.5);
+        background: rgba(255, 255, 255, 0.06);
+        box-shadow: 0 0 0 4px rgba(255, 107, 157, 0.15),
+          0 0 40px rgba(255, 107, 157, 0.2), inset 0 2px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      /* ==================== UTILITY ==================== */
+      .hidden {
+        display: none !important;
+      }
+
+      /* ==================== RESPONSIVE ==================== */
+      @media (max-width: 640px) {
+        .glass-card {
+          padding: 32px 24px;
+          border-radius: 32px;
+        }
+
+        #wisdomText {
+          font-size: 18px;
+          line-height: 1.7;
+        }
+
+        #settingsView h1 {
+          font-size: 30px;
+        }
+
+        .glass-button-primary {
+          padding: 18px 36px;
+          font-size: 16px;
+        }
+
+        .container {
+          padding: 0 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Écran principal -->
+    <div id="app">
+      <!-- Home View -->
+      <div id="homeView">
+        <!-- Badge catégorie -->
+        <div id="categoryBadge" class="glass-badge">
+          <span id="categoryEmoji">📜</span>
+          <span id="categoryName">Histoire</span>
+        </div>
+
+        <!-- Carte principale avec l'anecdote -->
+        <div class="glass-card">
+          <p id="wisdomText">Chargement de votre anecdote du jour...</p>
+        </div>
+
+        <!-- Bouton Paramètres -->
+        <button id="settingsBtn" class="glass-button-primary">
+          <svg
+            class="w-5 h-5"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+            ></path>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            ></path>
+          </svg>
+          <span>Paramètres</span>
+        </button>
+      </div>
+
+      <!-- Settings View (caché par défaut) -->
+      <div id="settingsView" class="hidden">
+        <div class="settings-container">
+          <!-- Header avec bouton retour -->
+          <div class="settings-header">
+            <h1>Paramètres</h1>
+            <button id="closeSettingsBtn" class="close-button">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Notifications Toggle -->
+          <div class="glass-card">
+            <div class="settings-card-content">
+              <div class="settings-card-left">
+                <span class="settings-emoji">🔔</span>
+                <span class="settings-label">Notifications</span>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" id="notifToggle" />
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Time Picker -->
+          <div id="timePickerCard" class="glass-card hidden">
+            <div class="settings-card-content" style="margin-bottom: 16px">
+              <div class="settings-card-left">
+                <span class="settings-emoji">🕐</span>
+                <span class="settings-label">Heure de notification</span>
+              </div>
+              <button id="timeDisplay" class="time-badge">09:00</button>
+            </div>
+
+            <div id="timePicker" class="hidden">
+              <input type="time" id="timeInput" value="09:00" />
+            </div>
+          </div>
+
+          <!-- Info -->
+          <p class="settings-info">
+            Une anecdote sera envoyée chaque jour à l'heure choisie
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+  </body>
+</html>

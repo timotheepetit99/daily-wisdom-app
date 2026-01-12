@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "text": "En 1518, une 'épidémie de danse' a frappé Strasbourg : des centaines de personnes ont dansé sans arrêt pendant des jours, certaines jusqu'à l'épuisement mortel. Les causes restent mystérieuses à ce jour.",
+    "category": "Histoire",
+    "emoji": "📜"
+  },
+  {
+    "id": 2,
+    "text": "Le miel ne pourrit jamais. Des archéologues ont trouvé des pots de miel vieux de 3000 ans dans des tombes égyptiennes, et il était encore parfaitement comestible.",
+    "category": "Science",
+    "emoji": "🔬"
+  },
+  {
+    "id": 3,
+    "text": "Les pieuvres ont trois cœurs et du sang bleu. Deux cœurs pompent le sang vers les branchies, tandis que le troisième pompe vers le reste du corps.",
+    "category": "Nature",
+    "emoji": "🌿"
+  },
+  {
+    "id": 4,
+    "text": "En Islande, il existe une application pour éviter de sortir avec un membre de sa famille à cause de la faible population et des liens de parenté étendus.",
+    "category": "Société",
+    "emoji": "🌍"
+  },
+  {
+    "id": 5,
+    "text": "La bibliothèque de Sarajevo contenait des manuscrits irremplaçables. Pendant la guerre de 1992, des bibliothécaires ont risqué leur vie pour sauver les livres sous les bombes.",
+    "category": "Culture",
+    "emoji": "🎭"
+  },
+  {
+    "id": 6,
+    "text": "Il y a plus de combinaisons possibles dans un jeu de 52 cartes mélangé qu'il n'y a d'atomes sur Terre. Chaque mélange crée probablement un ordre unique dans l'histoire de l'univers.",
+    "category": "Science",
+    "emoji": "🔬"
+  },
+  {
+    "id": 7,
+    "text": "Au Bhoutan, le bonheur national brut est plus important que le PIB. C'est le seul pays au monde à mesurer officiellement le bien-être de ses citoyens.",
+    "category": "Société",
+    "emoji": "🌍"
+  },
+  {
+    "id": 8,
+    "text": "Les corbeaux peuvent reconnaître et se souvenir de visages humains pendant des années. Ils peuvent même transmettre cette information aux autres corbeaux de leur groupe.",
+    "category": "Nature",
+    "emoji": "🌿"
+  },
+  {
+    "id": 9,
+    "text": "Le premier programme informatique a été écrit en 1843 par Ada Lovelace, 100 ans avant l'invention du premier ordinateur moderne.",
+    "category": "Histoire",
+    "emoji": "📜"
+  },
+  {
+    "id": 10,
+    "text": "À Venise, il est interdit de nourrir les pigeons depuis 2008. L'amende peut aller jusqu'à 500€. La ville essaie ainsi de protéger ses monuments historiques.",
+    "category": "Société",
+    "emoji": "🌍"
+  },
+  {
+    "id": 11,
+    "text": "Les bananes sont radioactives en raison de leur forte teneur en potassium-40. Il faudrait en manger 10 millions à la fois pour recevoir une dose létale de radiation.",
+    "category": "Science",
+    "emoji": "🔬"
+  },
+  {
+    "id": 12,
+    "text": "En 1913, un homme survit à une chute des chutes du Niagara sans équipement de sécurité. Bobby Leach est devenu célèbre, mais mourut 15 ans plus tard après avoir glissé sur une peau d'orange.",
+    "category": "Histoire",
+    "emoji": "📜"
+  },
+  {
+    "id": 13,
+    "text": "Les dauphins s'appellent par leur nom. Chaque dauphin développe un sifflement unique qui lui sert de signature sonore pour s'identifier auprès des autres.",
+    "category": "Nature",
+    "emoji": "🌿"
+  },
+  {
+    "id": 14,
+    "text": "Au Japon, il existe des cafés où l'on peut payer pour ne rien faire. Les clients viennent s'asseoir en silence, sans téléphone ni ordinateur, juste pour exister.",
+    "category": "Société",
+    "emoji": "🌍"
+  },
+  {
+    "id": 15,
+    "text": "La Joconde n'a pas de sourcils. Leonard de Vinci ne les a jamais peints, ou ils ont disparu lors d'une restauration. Le mystère demeure 500 ans plus tard.",
+    "category": "Culture",
+    "emoji": "🎭"
+  },
+  {
+    "id": 16,
+    "text": "L'univers a une odeur. Les astronautes décrivent l'espace comme sentant la viande brûlée, le métal chaud et les gaz d'échappement de soudure.",
+    "category": "Science",
+    "emoji": "🔬"
+  },
+  {
+    "id": 17,
+    "text": "En 1969, le Salvador et le Honduras ont déclenché une guerre de 100 heures à cause d'un match de football. On l'appelle encore aujourd'hui 'La Guerre du Football'.",
+    "category": "Histoire",
+    "emoji": "📜"
+  },
+  {
+    "id": 18,
+    "text": "Les arbres communiquent entre eux via un réseau souterrain de champignons appelé 'Wood Wide Web'. Ils peuvent s'échanger nutriments et signaux d'alerte.",
+    "category": "Nature",
+    "emoji": "🌿"
+  },
+  {
+    "id": 19,
+    "text": "En Finlande, les amendes routières sont proportionnelles au revenu. En 2015, un millionnaire a reçu une amende de 54 000€ pour excès de vitesse.",
+    "category": "Société",
+    "emoji": "🌍"
+  },
+  {
+    "id": 20,
+    "text": "Shakespeare a inventé plus de 1700 mots anglais, dont 'bedroom', 'lonely', 'assassination' et 'eyeball'. Beaucoup sont encore utilisés aujourd'hui.",
+    "category": "Culture",
+    "emoji": "🎭"
+  },
+  {
+    "id": 21,
+    "text": "Le cœur d'une baleine bleue est si gros qu'un humain pourrait nager dans ses artères. Il bat seulement 5 fois par minute quand elle plonge en profondeur.",
+    "category": "Nature",
+    "emoji": "🌿"
+  },
+  {
+    "id": 22,
+    "text": "Cléopâtre vivait plus près de la construction de la pyramide de Pizza Hut que de celle de la Grande Pyramide de Gizeh. Plus de 2500 ans séparent les deux événements.",
+    "category": "Histoire",
+    "emoji": "📜"
+  },
+  {
+    "id": 23,
+    "text": "Les fourmis représentent environ 20% de la biomasse animale terrestre. Si on mettait toutes les fourmis sur une balance, elles pèseraient autant que tous les humains.",
+    "category": "Science",
+    "emoji": "🔬"
+  },
+  {
+    "id": 24,
+    "text": "En Norvège, il est illégal de stériliser son chat sans raison médicale. Le pays considère que c'est une violation des droits de l'animal.",
+    "category": "Société",
+    "emoji": "🌍"
+  },
+  {
+    "id": 25,
+    "text": "La chanson 'Happy Birthday' était protégée par des droits d'auteur jusqu'en 2016. Warner Music gagnait 2 millions de dollars par an en droits.",
+    "category": "Culture",
+    "emoji": "🎭"
+  },
+  {
+    "id": 26,
+    "text": "Les diamants pleuvent sur Jupiter et Saturne. La pression atmosphérique transforme le carbone en diamants qui tombent comme de la pluie avant de fondre.",
+    "category": "Science",
+    "emoji": "🔬"
+  },
+  {
+    "id": 27,
+    "text": "En 1788, le Parlement autrichien a déclaré la guerre à lui-même par erreur et perdu 10 000 soldats. L'incident est connu comme la Bataille de Karánsebes.",
+    "category": "Histoire",
+    "emoji": "📜"
+  },
+  {
+    "id": 28,
+    "text": "Les flamants roses ne sont pas naturellement roses. Leur couleur vient des crevettes qu'ils mangent. En captivité, sans régime adapté, ils deviennent blancs.",
+    "category": "Nature",
+    "emoji": "🌿"
+  },
+  {
+    "id": 29,
+    "text": "À Singapour, il est illégal de vendre du chewing-gum depuis 1992. Seul le chewing-gum thérapeutique prescrit par un médecin est autorisé.",
+    "category": "Société",
+    "emoji": "🌍"
+  },
+  {
+    "id": 30,
+    "text": "Le tableau le plus cher jamais vendu est 'Salvator Mundi' de Léonard de Vinci, acheté 450 millions de dollars en 2017. Son emplacement actuel est inconnu.",
+    "category": "Culture",
+    "emoji": "🎭"
+  },
+  {
+    "id": 31,
+    "text": "L'eau chaude gèle plus vite que l'eau froide dans certaines conditions. Ce phénomène contre-intuitif s'appelle l'effet Mpemba et intrigue encore les scientifiques.",
+    "category": "Science",
+    "emoji": "🔬"
+  },
+  {
+    "id": 32,
+    "text": "Les Vikings ont découvert l'Amérique 500 ans avant Christophe Colomb. Des preuves archéologiques à Terre-Neuve datent de l'an 1000 environ.",
+    "category": "Histoire",
+    "emoji": "📜"
+  },
+  {
+    "id": 33,
+    "text": "Les koalas dorment jusqu'à 22 heures par jour. Leur régime alimentaire d'eucalyptus est si pauvre en énergie qu'ils doivent économiser au maximum.",
+    "category": "Nature",
+    "emoji": "🌿"
+  },
+  {
+    "id": 34,
+    "text": "En Suisse, il est illégal de posséder un seul cochon d'Inde. La loi oblige à en avoir au minimum deux car ce sont des animaux sociaux.",
+    "category": "Société",
+    "emoji": "🌍"
+  },
+  {
+    "id": 35,
+    "text": "Le nom complet de Bangkok fait 168 lettres en thaï. C'est le nom de lieu le plus long du monde selon le Livre Guinness des records.",
+    "category": "Culture",
+    "emoji": "🎭"
+  },
+  {
+    "id": 36,
+    "text": "Un nuage pèse en moyenne 500 tonnes. L'eau qu'il contient est dispersée en minuscules gouttelettes si légères qu'elles flottent dans l'air.",
+    "category": "Science",
+    "emoji": "🔬"
+  },
+  {
+    "id": 37,
+    "text": "Napoléon n'était pas particulièrement petit. Il mesurait 1m68, soit la taille moyenne d'un Français de l'époque. Le mythe vient d'une confusion entre unités de mesure.",
+    "category": "Histoire",
+    "emoji": "📜"
+  },
+  {
+    "id": 38,
+    "text": "Les requins existent depuis plus de 400 millions d'années. Ils ont survécu à quatre extinctions massives, dont celle qui a tué les dinosaures.",
+    "category": "Nature",
+    "emoji": "🌿"
+  },
+  {
+    "id": 39,
+    "text": "En Suède, 89% des ordures ménagères sont recyclées ou converties en énergie. Le pays importe même des déchets d'autres pays pour alimenter ses centrales.",
+    "category": "Société",
+    "emoji": "🌍"
+  },
+  {
+    "id": 40,
+    "text": "Van Gogh n'a vendu qu'un seul tableau de son vivant. 'La Vigne Rouge' a été achetée pour 400 francs, environ 2000€ actuels, quelques mois avant sa mort.",
+    "category": "Culture",
+    "emoji": "🎭"
+  },
+  {
+    "id": 41,
+    "text": "La Tour Eiffel peut grandir de 15 cm en été. Le métal se dilate avec la chaleur, faisant pencher légèrement le sommet loin du soleil.",
+    "category": "Science",
+    "emoji": "🔬"
+  },
+  {
+    "id": 42,
+    "text": "En 1919, une cuve géante de mélasse a explosé à Boston, créant une vague de 8 mètres qui a tué 21 personnes et détruit des bâtiments. On l'appelle la Grande Inondation de Mélasse.",
+    "category": "Histoire",
+    "emoji": "📜"
+  },
+  {
+    "id": 43,
+    "text": "Les éléphants peuvent 'entendre' avec leurs pieds. Ils détectent les vibrations sismiques du sol pour communiquer sur plusieurs kilomètres.",
+    "category": "Nature",
+    "emoji": "🌿"
+  },
+  {
+    "id": 44,
+    "text": "Le Danemark taxe la viande rouge pour réduire l'empreinte carbone. C'est le premier pays au monde à mettre en place une taxe climatique sur l'alimentation.",
+    "category": "Société",
+    "emoji": "🌍"
+  },
+  {
+    "id": 45,
+    "text": "Mozart a composé sa première symphonie à l'âge de 8 ans. À 5 ans, il composait déjà de courtes pièces et donnait des concerts à travers l'Europe.",
+    "category": "Culture",
+    "emoji": "🎭"
+  },
+  {
+    "id": 46,
+    "text": "Votre corps contient assez de carbone pour fabriquer 900 crayons, assez de fer pour un clou de 7cm, et assez de soufre pour tuer les puces d'un chien.",
+    "category": "Science",
+    "emoji": "🔬"
+  },
+  {
+    "id": 47,
+    "text": "Les Romains utilisaient l'urine comme dentifrice. L'ammoniaque qu'elle contient était considérée comme un excellent agent blanchissant.",
+    "category": "Histoire",
+    "emoji": "📜"
+  },
+  {
+    "id": 48,
+    "text": "Les chats passent 70% de leur vie à dormir. Un chat de 9 ans n'a été éveillé que pendant 3 ans de son existence.",
+    "category": "Nature",
+    "emoji": "🌿"
+  },
+  {
+    "id": 49,
+    "text": "En Allemagne, il est illégal de manquer d'essence sur l'autoroute. C'est considéré comme un arrêt évitable et donc une infraction.",
+    "category": "Société",
+    "emoji": "🌍"
+  },
+  {
+    "id": 50,
+    "text": "Le film le plus cher de l'histoire est 'Pirates des Caraïbes 4' avec un budget de 410 millions de dollars. C'est plus que le PIB de plusieurs petits pays.",
+    "category": "Culture",
+    "emoji": "🎭"
+  }
+]
