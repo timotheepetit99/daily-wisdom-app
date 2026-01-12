@@ -696,21 +696,24 @@
         </div>
         
         <!-- Time Picker -->
-        <div id="timePickerCard" class="glass-card hidden">
-          <div class="settings-card-content" style="margin-bottom: 16px;">
-            <div class="settings-card-left">
-              <span class="settings-emoji">🕐</span>
-              <span class="settings-label">Heure de notification</span>
-            </div>
-            <button id="timeDisplay" class="time-badge">
-              09:00
-            </button>
-          </div>
-          
-          <div id="timePicker" class="hidden">
-            <input type="time" id="timeInput" value="09:00">
-          </div>
-        </div>
+<div id="timePickerCard" class="glass-card hidden">
+  <div class="settings-card-content">
+    <div class="settings-card-left">
+      <span class="settings-emoji">🕐</span>
+      <span class="settings-label">Heure de notification</span>
+    </div>
+    <button id="timeDisplay" class="time-badge">
+      09:00
+    </button>
+  </div>
+  
+  <!-- Time picker amélioré -->
+  <div id="timePicker" class="hidden">
+    <div class="time-picker-container">
+      <input type="time" id="timeInput" value="09:00">
+    </div>
+  </div>
+</div>
         
         <!-- Info -->
         <p class="settings-info">
