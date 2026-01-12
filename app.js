@@ -243,3 +243,37 @@ document.querySelectorAll('.glass-card').forEach((card) => {
     card.style.setProperty('--mouse-y', `${y}%`);
   });
 });
+// ==================== TEST NOTIFICATION ====================
+document.getElementById('testNotifBtn')?.addEventListener('click', async () => {
+  if (!('Notification' in window)) {
+    alert('❌ Votre navigateur ne supporte pas les notifications');
+    return;
+  }
+
+  if (Notification.permission === 'granted') {
+    // Envoie une notification de test
+    if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+      // Via le service worker
+      navigator.serviceWorker.ready.then((registration) => {
+        registration.showNotification('✨ Test Daily Wisdom', {
+          body: 'Les pieuvres ont trois cœurs et du sang bleu !',
+          icon: 'https://api.dicebear.com/7.x/shapes/svg?seed=wisdom&backgroundColor=FF6B9D&scale=80',
+          badge: 'https://api.dicebear.com/7.x/shapes/svg?seed=badge&backgroundColor=FF6B9D&scale=40',
+          vibrate: [200, 100, 200],
+          tag: 'test-wisdom',
+          data: { url: '/' }
+        });
+      });
+    } else {
+      // Fallback : notification simple
+      new Notification('✨ Test Daily Wisdom', {
+        body: 'Les pieuvres ont trois cœurs et du sang bleu !',
+        icon: 'https://api.dicebear.com/7.x/shapes/svg?seed=wisdom&backgroundColor=FF6B9D&scale=80'
+      });
+    }
+    
+    alert('✅ Notification envoyée !');
+  } else {
+    alert('⚠️ Veuillez d\'abord activer les notifications dans Paramètres');
+  }
+});
